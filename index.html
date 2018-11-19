@@ -28,6 +28,7 @@
     var win = 0;
     var lose = 0;
     var guessesNumber = 9;
+    var youChose = [];
 
     var infoText=document.getElementById("info-text");
     var youChoseTest=document.getElementById("youchose-text");
@@ -39,58 +40,39 @@
     document.onkeyup = function(event) {
     var userGuess = event.key;
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    var guess = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
+    "s", "t", "u", "v", "w", "x", "y", "z"];
 
-   if ((userGuess = "a") || (userGuess = "b") || (userGuess = "c") || (userGuess = "d") || (userGuess = "e") || (userGuess = "f") ||
-   (userGuess = "g") || (userGuess = "h") || (userGuess = "i") || (userGuess = "j") || (userGuess = "k") || (userGuess = "l") ||
-   (userGuess = "m") || (userGuess = "n") || (userGuess = "o") || (userGuess = "p") || (userGuess = "q") || (userGuess = "r") ||
-   (userGuess = "s") || (userGuess = "t") || (userGuess = "u") || (userGuess = "v") || (userGuess = "w") || (userGuess = "x") ||
-   (userGuess = "y") || (userGuess = "z")) {
-
-       if ((userGuess == "a" && computerGuess == "a") || (userGuess == "b" && computerGuess == "b") ||
-       (userGuess == "c" && computerGuess == "c") || (userGuess == "d" && computerGuess == "d") ||
-       (userGuess == "e" && computerGuess == "e") || (userGuess == "f" && computerGuess == "f") ||
-       (userGuess == "g" && computerGuess == "g") || (userGuess == "h" && computerGuess == "h") ||
-       (userGuess == "i" && computerGuess == "i") || (userGuess == "j" && computerGuess == "j") ||
-       (userGuess == "k" && computerGuess == "k") || (userGuess == "l" && computerGuess == "l") ||
-       (userGuess == "m" && computerGuess == "m") || (userGuess == "n" && computerGuess == "n") ||
-       (userGuess == "o" && computerGuess == "o") || (userGuess == "p" && computerGuess == "p") ||
-       (userGuess == "q" && computerGuess == "q") || (userGuess == "r" && computerGuess == "r") ||
-       (userGuess == "s" && computerGuess == "s") || (userGuess == "t" && computerGuess == "t") ||
-       (userGuess == "u" && computerGuess == "u") || (userGuess == "v" && computerGuess == "v") ||
-       (userGuess == "w" && computerGuess == "w") || (userGuess == "x" && computerGuess == "x") ||
-       (userGuess == "y" && computerGuess == "y") || (userGuess == "z" && computerGuess == "z")) {
-           win++;
-        //    guessesNumberText = 9;
-       } else if ((userGuess == "a" != computerGuess == "a") || (userGuess == "b" != computerGuess == "b") ||
-       (userGuess == "c" != computerGuess == "c") || (userGuess == "d" != computerGuess == "d") ||
-       (userGuess == "e" != computerGuess == "e") || (userGuess == "f" != computerGuess == "f") ||
-       (userGuess == "g" != computerGuess == "g") || (userGuess == "h" != computerGuess == "h") ||
-       (userGuess == "i" != computerGuess == "i") || (userGuess == "j" != computerGuess == "j") ||
-       (userGuess == "k" != computerGuess == "k") || (userGuess == "l" != computerGuess == "l") ||
-       (userGuess == "m" != computerGuess == "m") || (userGuess == "n" != computerGuess == "n") ||
-       (userGuess == "o" != computerGuess == "o") || (userGuess == "p" != computerGuess == "p") ||
-       (userGuess == "q" != computerGuess == "q") || (userGuess == "r" != computerGuess == "r") ||
-       (userGuess == "s" != computerGuess == "s") || (userGuess == "t" != computerGuess == "t") ||
-       (userGuess == "u" != computerGuess == "u") || (userGuess == "v" != computerGuess == "v") ||
-       (userGuess == "w" != computerGuess == "w") || (userGuess == "x" != computerGuess == "x") ||
-       (userGuess == "y" != computerGuess == "y") || (userGuess == "z" != computerGuess == "z")) {
-           lose++;
-        //    guessesNumberText == ;
+    if (guess.indexOf(userGuess.toLowerCase) === computerChoices) {
+        win++;
+        guessesNumber = 9;
+        youGuess = [];
+        reset ();
+    }
+    else if (guess.indexOf(userGuess.toLowerCase) != computerChoices) {
+        guessesNumber --;
+        youChose.push(userGuess);
+    }
+    
+        if (guessesNumber ===0){
+            lose ++;
+            guessesNumber = 9;
+            youGuess = [];
+            reset ();
         }
     
+
     youChoseTest.textContent = "you chose: " + userGuess;
     computerChoseText.textContent = "computer chose: " + computerGuess;
     guessesNumberText.textContent = "# " + guessesNumber + " left";
     winText.textContent = "you win # " + win + " times";
     loseText.textContent = "you lose # " + lose + " times";
-
-
     
     
 
     }
 
-    }
+
     
     </script>
 </body>
